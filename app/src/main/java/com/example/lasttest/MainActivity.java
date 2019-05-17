@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    public void getGoogleCredentials(){
+        String googleIdToken = "";
+        AuthCredential credential = GoogleAuthProvider.getCredential(googleIdToken, null);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
     @Override
     public void onStart() {
