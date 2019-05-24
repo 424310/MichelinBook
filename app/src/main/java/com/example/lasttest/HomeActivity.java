@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity
     private FirebaseAuth auth;
     private Context mContext;
 
-    private FloatingActionButton fab_main, fab_sub1, fab_sub2;
+    private FloatingActionButton fab_main, fab_sub1, fab_sub2, fab_sub3;
     private Animation fab_open, fab_close;
 
     private boolean isFabOpen = false;
@@ -51,10 +51,12 @@ public class HomeActivity extends AppCompatActivity
         fab_main = (FloatingActionButton) findViewById(R.id.fab_main);
         fab_sub1 = (FloatingActionButton) findViewById(R.id.fab_sub1);
         fab_sub2 = (FloatingActionButton) findViewById(R.id.fab_sub2);
+        fab_sub3 = (FloatingActionButton) findViewById(R.id.fab_sub3);
 
         fab_main.setOnClickListener(this);
         fab_sub1.setOnClickListener(this);
         fab_sub2.setOnClickListener(this);
+        fab_sub3.setOnClickListener(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -130,9 +132,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-            finish();
-            Intent intent = new Intent(this, DataBase.class);
-            startActivity(intent);
+
         } else if(id == R.id.nav_logout) {
             auth.signOut();
             finish();
@@ -161,6 +161,11 @@ public class HomeActivity extends AppCompatActivity
                 Intent intent2 = new Intent(this, QuickVisit.class);
                 startActivity(intent2);
                 break;
+            case R.id.fab_sub3:
+                toggleFab();
+                Intent intent3 = new Intent(this, DataBase.class);
+                startActivity(intent3);
+                break;
         }
     }
 
@@ -169,15 +174,19 @@ public class HomeActivity extends AppCompatActivity
             fab_main.setImageResource(R.drawable.ic_fab_plus);
             fab_sub1.startAnimation(fab_close);
             fab_sub2.startAnimation(fab_close);
+            fab_sub3.startAnimation(fab_close);
             fab_sub1.setClickable(false);
             fab_sub2.setClickable(false);
+            fab_sub3.setClickable(false);
             isFabOpen = false;
         } else {
             fab_main.setImageResource(R.drawable.ic_fab_close);
             fab_sub1.startAnimation(fab_open);
             fab_sub2.startAnimation(fab_open);
+            fab_sub3.startAnimation(fab_open);
             fab_sub1.setClickable(true);
             fab_sub2.setClickable(true);
+            fab_sub3.setClickable(true);
             isFabOpen = true;
         }
 

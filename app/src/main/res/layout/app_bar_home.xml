@@ -44,16 +44,29 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/fab_sub2"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="15dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
             android:visibility="invisible"
-            android:src="@android:drawable/ic_dialog_email"
+            android:src="@android:drawable/ic_dialog_map"
             app:borderWidth="0dp"
             app:fabSize="normal"
             />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_sub2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/fab_sub3"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_sub3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
