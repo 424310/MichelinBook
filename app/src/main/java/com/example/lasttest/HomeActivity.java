@@ -3,6 +3,7 @@ package com.example.lasttest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.view.animation.Animation;
@@ -53,6 +59,7 @@ public class HomeActivity extends AppCompatActivity
         fab_sub2.setOnClickListener(this);
         fab_sub3.setOnClickListener(this);
 
+        int img[] = {R.drawable.ic_menu_camera, R.drawable.ic_menu_gallery, R.drawable.ic_menu_share, R.drawable.ic_menu_send};
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
@@ -74,6 +81,18 @@ public class HomeActivity extends AppCompatActivity
 
         nameTextView.setText(auth.getCurrentUser().getDisplayName());
         emailTextView.setText(auth.getCurrentUser().getEmail());
+
+        MyAdapter adapter = new MyAdapter (
+                getApplicationContext(),
+                R.layout.homeview,       // GridView 항목의 레이아웃 row.xml
+                img);    // 데이터
+
+        GridView gv = (GridView)findViewById(R.id.gridView);
+        gv.setAdapter(adapter);  // 커스텀 아답타를 GridView 에 적용
+
+        // GridView 아이템을 클릭하면 상단 텍스트뷰에 position 출력
+        // JAVA8 에 등장한 lambda expression 으로 구현했습니다. 코드가 많이 간결해지네요
+
     }
 
     @Override
@@ -185,5 +204,45 @@ public class HomeActivity extends AppCompatActivity
             isFabOpen = true;
         }
 
+    }
+}
+
+class MyAdapter extends BaseAdapter {
+    Context context;
+    int layout;
+    int img[];
+    LayoutInflater inf;
+
+    public MyAdapter(Context context, int layout, int[] img) {
+        this.context = context;
+        this.layout = layout;
+        this.img = img;
+        inf = (LayoutInflater) context.getSystemService
+                (Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getCount() {
+        return img.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return img[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView==null)
+            convertView = inf.inflate(layout, null);
+        ImageView iv = (ImageView)convertView.findViewById(R.id.imageView1);
+        iv.setImageResource(img[position]);
+
+        return convertView;
     }
 }
