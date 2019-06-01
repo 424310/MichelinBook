@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                             //Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
-                            Toast.makeText(MainActivity.this, "google 아이디 연동 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "환영합니다", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.

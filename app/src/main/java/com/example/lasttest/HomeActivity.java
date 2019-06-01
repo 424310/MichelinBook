@@ -3,7 +3,6 @@ package com.example.lasttest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,16 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.content.Context;
 
-import com.example.lasttest.MainActivity;
-import com.example.lasttest.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity
@@ -121,14 +116,17 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, MyPage.class);
+            Intent intent = new Intent(this, Test.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_post) {
+            Intent intent = new Intent(this, PostList.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_mapsearch) {
             Intent intent = new Intent(this, Map.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_mypage) {
             finish();
-            Intent intent = new Intent(this, Test.class);
+            Intent intent = new Intent(this, MyPage.class);
             startActivity(intent);
         } else if(id == R.id.nav_logout) {
             auth.signOut();
