@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lasttest">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -12,8 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostList"></activity>
-        <activity android:name=".Test" />
+        <activity android:name=".CategoryView"></activity>
+        <activity android:name=".CategoryListActivity" />
+        <activity android:name=".Category_DB_Insert" />
+        <activity android:name=".PostList" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -39,7 +42,6 @@
             android:name=".AddPost"
             android:label="@string/title_activity_add_post"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DataBase" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

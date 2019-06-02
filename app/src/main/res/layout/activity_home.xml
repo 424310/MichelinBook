@@ -11,22 +11,19 @@
 
 
     <include
-        layout="@layout/content_home"
-        android:id="@+id/home_content"/>
+        android:id="@+id/home_content"
+        layout="@layout/content_home" />
 
-    <include
-        layout="@layout/floatingbutton"/>
+    <include layout="@layout/floatingbutton" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:backgroundTint="#ffffff"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/activity_home_drawer"
-        android:backgroundTint="#ffffff"
         app:itemIconTint="#ff5f6f"
-        />
-
+        app:menu="@menu/activity_home_drawer"/>
 </android.support.v4.widget.DrawerLayout>

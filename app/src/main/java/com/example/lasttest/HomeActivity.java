@@ -3,6 +3,7 @@ package com.example.lasttest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -26,6 +27,8 @@ import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private TextView nameTextView;
@@ -38,11 +41,38 @@ public class HomeActivity extends AppCompatActivity
 
     private boolean isFabOpen = false;
 
-
+    /*DB 불러온 리사이클러뷰
+    private RecyclerView mRecyclerView;
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        /*DB 불러온 리사이클러뷰(시작)
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_categories);
+        new FirebaseDatabaseHelper().readCategories(new FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Category> categories, List<String> keys) {
+                new RecyclerView_Config().setConfig(mRecyclerView, HomeActivity.this, categories, keys);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
+        DB 불러온 리사이클러뷰(끝)*/
 
         mContext = getApplicationContext();
 
@@ -135,7 +165,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, Test.class);
+            Intent intent = new Intent(this, CategoryListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_post) {
             Intent intent = new Intent(this, PostList.class);
@@ -177,7 +207,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.fab_sub3:
                 toggleFab();
-                Intent intent3 = new Intent(this, DataBase.class);
+                Intent intent3 = new Intent(this, Category_DB_Insert.class);
                 startActivity(intent3);
                 break;
         }
