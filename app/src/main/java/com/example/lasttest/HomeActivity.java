@@ -49,31 +49,6 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        /*DB 불러온 리사이클러뷰(시작)
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_categories);
-        new FirebaseDatabaseHelper().readCategories(new FirebaseDatabaseHelper.DataStatus() {
-            @Override
-            public void DataIsLoaded(List<Category> categories, List<String> keys) {
-                new RecyclerView_Config().setConfig(mRecyclerView, HomeActivity.this, categories, keys);
-            }
-
-            @Override
-            public void DataIsInserted() {
-
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });
-        DB 불러온 리사이클러뷰(끝)*/
-
         mContext = getApplicationContext();
 
         fab_open = AnimationUtils.loadAnimation(mContext, R.anim.fab_open);
@@ -122,6 +97,31 @@ public class HomeActivity extends AppCompatActivity
 
         // GridView 아이템을 클릭하면 상단 텍스트뷰에 position 출력
         // JAVA8 에 등장한 lambda expression 으로 구현했습니다. 코드가 많이 간결해지네요
+
+        /*DB 불러온 리사이클러뷰(시작)
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_categories);
+        new FirebaseDatabaseHelper().readCategories(new FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Category> categories, List<String> keys) {
+                new RecyclerView_Config().setConfig(mRecyclerView, HomeActivity.this, categories, keys);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
+        DB 불러온 리사이클러뷰(끝)*/
 
     }
 
