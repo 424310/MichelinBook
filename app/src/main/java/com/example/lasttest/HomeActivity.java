@@ -197,12 +197,12 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.fab_sub1:
                 toggleFab();
-                Intent intent1 = new Intent(this, AddPost.class);
+                Intent intent1 = new Intent(this, QuickVisit.class);
                 startActivity(intent1);
                 break;
             case R.id.fab_sub2:
                 toggleFab();
-                Intent intent2 = new Intent(this, QuickVisit.class);
+                Intent intent2 = new Intent(this, AddPost.class);
                 startActivity(intent2);
                 break;
             case R.id.fab_sub3:

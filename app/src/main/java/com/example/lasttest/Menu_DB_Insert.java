@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Category_DB_Insert extends AppCompatActivity {
+public class Menu_DB_Insert extends AppCompatActivity {
 
     // DB에 저장시킬 데이터를 입력받는 EditText
     private EditText editName, editAddress, editNumber;
@@ -62,17 +62,17 @@ public class Category_DB_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //addCategory() 코드는 하단에 있음
-                addCategory(editName.getText().toString().trim(), editAddress.getText().toString().trim(), editNumber.getText().toString().trim());
+                addMenu(editName.getText().toString().trim(), editAddress.getText().toString().trim(), editNumber.getText().toString().trim());
                 finish();
-                Intent intent = new Intent(Category_DB_Insert.this, HomeActivity.class);
+                Intent intent = new Intent(Menu_DB_Insert.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
-        
+
     }
 
-    public void addCategory(String name, String address, String number){
-        Category categories = new Category(name, address, number);
-        myRef.child(UserId).child(name).setValue(categories);
+    public void addMenu(String name, String address, String number){
+        Menu menus = new Menu(name, address, number);
+        myRef.child(UserId).child(name).setValue(menus);
     }
 }
