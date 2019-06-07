@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoryView"></activity>
+        <activity android:name=".MyPage_DB_Insert"></activity>
+        <activity android:name=".CategoryView" />
         <activity android:name=".CategoryListActivity" />
         <activity android:name=".Category_DB_Insert" />
         <activity android:name=".PostList" />

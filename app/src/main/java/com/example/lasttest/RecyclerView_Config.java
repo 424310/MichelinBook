@@ -3,6 +3,7 @@ package com.example.lasttest;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ public class RecyclerView_Config {
     public void setConfig(RecyclerView recyclerView, Context context, List<Category> categories, List<String> keys){
         mContext = context;
         mCategoriesAdapter = new CategoriesAdapter(categories, keys);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
         recyclerView.setAdapter(mCategoriesAdapter);
     }
 
