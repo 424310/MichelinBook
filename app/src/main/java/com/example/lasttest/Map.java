@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import android.support.v4.app.Fragment;
 
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -158,6 +159,7 @@ public class Map extends AppCompatActivity
             }
         });
 
+
         mGps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -209,7 +211,6 @@ public class Map extends AppCompatActivity
         if (list.size() > 0) {
             Address address = list.get(0);
 
-            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
 
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM, address.getAddressLine(0));
         }
@@ -218,7 +219,7 @@ public class Map extends AppCompatActivity
 
     private void moveCamera(LatLng latLng, float zoom, String title) {
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-
+            previous_marker.clear();
         if (!title.equals("mylocation")) {
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
@@ -231,6 +232,7 @@ public class Map extends AppCompatActivity
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
+
 
     @Override
     public void onResume() {
@@ -367,16 +369,26 @@ public class Map extends AppCompatActivity
 
         Log.d(TAG, "onLocationChanged : ");
 
-        String markerTitle = getCurrentAddress(currentPosition);
+        final String markerTitle = getCurrentAddress(currentPosition);
         String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
                 + " 경도:" + String.valueOf(location.getLongitude());
 
         //현재 위치에 마커 생성하고 이동
         setCurrentLocation(location, markerTitle, markerSnippet);
 
-        mCurrentLocatiion = location;
-    }
 
+        mCurrentLocatiion = location;
+        mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                String addressString = "";
+                Toast.makeText(Map.this,marker.getTitle(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Map.this, Category_DB_Insert.class);
+                intent.putExtra(addressString, marker.getTitle());
+                finish();
+            }
+        });
+    }
 
     @Override
     protected void onStart() {

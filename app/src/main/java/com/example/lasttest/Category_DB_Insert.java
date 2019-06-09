@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,9 +26,12 @@ public class Category_DB_Insert extends AppCompatActivity {
 
     // DB에 저장시킬 데이터를 입력받는 EditText
     private EditText editName, editAddress, editNumber;
+    private TextView address;
+    String addressString;
 
     // 데이터를 저장 버튼
     private Button inputBtn;
+    private Button address_Btn;
 
     // DB 관련 변수
     private DatabaseReference myRef;
@@ -47,6 +51,8 @@ public class Category_DB_Insert extends AppCompatActivity {
         editAddress = (EditText) findViewById(R.id.edit_address);
         editNumber = (EditText) findViewById(R.id.edit_number);
         inputBtn = (Button) findViewById(R.id.inputBtn);
+        address_Btn = (Button) findViewById(R.id.address_Btn);
+        address = (TextView) findViewById(R.id.address) ;
 
         // DB 관련 변수 초기화
         database = FirebaseDatabase.getInstance();
@@ -55,6 +61,14 @@ public class Category_DB_Insert extends AppCompatActivity {
         //해당 User 값 받아오기
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
+
+        address_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Category_DB_Insert.this, Map.class);
+                startActivity(intent);
+            }
+        });
 
         // 버튼 리스너 정의
         // 클릭 시 EditText의 내용이 DB에 저장
