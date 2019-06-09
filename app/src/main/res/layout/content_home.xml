@@ -30,13 +30,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <GridView
-        android:id="@+id/gridView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="100dp"
-        android:horizontalSpacing="5dp"
-        android:verticalSpacing="5dp"
-        android:numColumns="auto_fit">
-    </GridView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>

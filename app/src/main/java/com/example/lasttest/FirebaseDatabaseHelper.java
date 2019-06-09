@@ -29,8 +29,8 @@ public class FirebaseDatabaseHelper {
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
         database = FirebaseDatabase.getInstance();
-        databaseRef = database.getReference("Category");
-        myRef = databaseRef.child("Users").child(UserId);
+        databaseRef = database.getReference(UserId);
+        myRef = databaseRef;
     }
 
     public void readCategories(final DataStatus dataStatus){
