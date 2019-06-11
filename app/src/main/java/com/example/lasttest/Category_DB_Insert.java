@@ -87,6 +87,6 @@ public class Category_DB_Insert extends AppCompatActivity {
 
     public void addCategory(String name, String address, String number){
         Category categories = new Category(name, address, number);
-        myRef.child(UserId).child(name).setValue(categories);
+        myRef.child(UserId).child("Category").child(name).setValue(categories);
     }
 }

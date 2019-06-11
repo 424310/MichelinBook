@@ -13,39 +13,43 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseDatabaseHelper {
-    private String UserId;
-    private FirebaseAuth mAuth;
+public class menu_FirebaseDatabaseHelper {
+    private String UserId, name;
+    public FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference databaseRef, myRef;
-    private List<Category> categories = new ArrayList<>();
+    private List<Menu> menus = new ArrayList<>();
 
     public interface DataStatus{
-        void DataIsLoaded(List<Category> categories, List<String> keys);
+        void DataIsLoaded(List<Menu> menus, List<String> keys);
         void DataIsInserted();
         void DataIsUpdated();
         void DataIsDeleted();
     }
-    public FirebaseDatabaseHelper() {
+    public menu_FirebaseDatabaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
+        //카테고리 이름은 어떻게 가져와야할까? 이렇게!
+        CategoryView categoryView = new CategoryView();
+        name = categoryView.getCategoryView();
+
         database = FirebaseDatabase.getInstance();
         databaseRef = database.getReference(UserId);
-        myRef = databaseRef.child("Category");
+        myRef = databaseRef.child("Menu").child(name);
     }
 
-    public void readCategories(final DataStatus dataStatus){
+    public void readMenus(final DataStatus dataStatus){
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                categories.clear();
+                menus.clear();
                 List<String> keys = new ArrayList<>();
                 for(DataSnapshot keyNode : dataSnapshot.getChildren()){
                     keys.add(keyNode.getKey());
-                    Category category = keyNode.getValue(Category.class);
-                    categories.add(category);
+                    Menu menu = keyNode.getValue(Menu.class);
+                    menus.add(menu);
                 }
-                dataStatus.DataIsLoaded(categories, keys);
+                dataStatus.DataIsLoaded(menus, keys);
             }
 
             @Override
@@ -55,8 +59,8 @@ public class FirebaseDatabaseHelper {
         });
     }
 
-    public void updateCategories(String key, Category categories, final FirebaseDatabaseHelper.DataStatus dataStatus){
-        myRef.child(key).setValue(categories).addOnSuccessListener(new OnSuccessListener<Void>() {
+    public void updateMunu(String key, Menu menu, final DataStatus dataStatus){
+        myRef.child(key).setValue(menu).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dataStatus.DataIsUpdated();
@@ -64,7 +68,7 @@ public class FirebaseDatabaseHelper {
         });
     }
 
-    public void deleteCategories(String key, final FirebaseDatabaseHelper.DataStatus dataStatus){
+    public void deleteMunu(String key, final DataStatus dataStatus){
         myRef.child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

@@ -23,56 +23,58 @@ import java.util.Iterator;
 
 public class Menu_DB_Insert extends AppCompatActivity {
 
-    // DB에 저장시킬 데이터를 입력받는 EditText
-    private EditText editName, editAddress, editNumber;
-
-    // 데이터를 저장 버튼
-    private Button inputBtn;
+    private EditText edit_menuName, edit_menuPrice, edit_menuComment;
+    private Button InsertBtn, CancelBtn;
+    private String UserId, name;
 
     // DB 관련 변수
-    private DatabaseReference myRef;
     private FirebaseDatabase database;
-    private String UserId;
-
-    // 사용자 정보 가져오려고
+    private DatabaseReference myRef;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category__db__insert);
+        setContentView(R.layout.activity_menu__db__insert);
 
-        // 변수 초기화
-        editName = (EditText) findViewById(R.id.edit_name);
-        editAddress = (EditText) findViewById(R.id.edit_address);
-        editNumber = (EditText) findViewById(R.id.edit_number);
-        inputBtn = (Button) findViewById(R.id.inputBtn);
-
-        // DB 관련 변수 초기화
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
+        edit_menuName = (EditText) findViewById(R.id.edit_menuName);
+        edit_menuPrice = (EditText) findViewById(R.id.edit_menuPrice);
+        edit_menuComment = (EditText) findViewById(R.id.edit_menuComment);
+        InsertBtn = (Button) findViewById(R.id.InsertBtn);
+        CancelBtn = (Button) findViewById(R.id.CancelBtn);
 
         //해당 User 값 받아오기
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
 
-        // 버튼 리스너 정의
+        //카테고리 이름 받아오기
+        CategoryView categoryView = new CategoryView();
+        name = categoryView.getCategoryView();
+
+        // 파이어베이스 입력 경로
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+
         // 클릭 시 EditText의 내용이 DB에 저장
-        inputBtn.setOnClickListener(new View.OnClickListener() {
+        InsertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addCategory() 코드는 하단에 있음
-                addMenu(editName.getText().toString().trim(), editAddress.getText().toString().trim(), editNumber.getText().toString().trim());
-                finish();
-                Intent intent = new Intent(Menu_DB_Insert.this, HomeActivity.class);
-                startActivity(intent);
+                addMenu(edit_menuName.getText().toString().trim(), edit_menuPrice.getText().toString().trim(), edit_menuComment.getText().toString().trim());
+                finish(); return;
+            }
+        });
+
+        CancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); return;
             }
         });
 
     }
 
-    public void addMenu(String name, String address, String number){
-        Menu menus = new Menu(name, address, number);
-        myRef.child(UserId).child(name).setValue(menus);
+    public void addMenu(String menu_name, String menu_price, String menu_comment){
+        Menu menus = new Menu(menu_name, menu_price,menu_comment);
+        myRef.child(UserId).child("Menu").child(name).child(menu_name).setValue(menus);
     }
 }

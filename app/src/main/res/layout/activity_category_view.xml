@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CategoryView">
 
 
@@ -24,6 +25,50 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="카테고리 정보 수정" />
+
+        <Button
+            android:id="@+id/Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="카테고리 정보 삭제" />
+
+        <Button
+            android:id="@+id/menu_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="메뉴판 입력" />
+
+
+        <Button
+            android:id="@+id/menu_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴판 열기" />
+
+        <Button
+            android:id="@+id/menu_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴판 접기" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_menus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
 

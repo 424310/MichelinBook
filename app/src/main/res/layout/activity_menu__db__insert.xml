@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:weightSum="8"
+    tools:context=".Menu_DB_Insert">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_menuName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="menuName: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edit_menuName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text_menuName"
+            android:layout_alignBottom="@+id/text_menuName"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:hint="메뉴이름"/>
+
+        <TextView
+            android:id="@+id/text_menuPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_menuName"
+            android:layout_alignLeft="@+id/text_menuName"
+            android:layout_marginTop="20dp"
+            android:text="menuPrice: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edit_menuPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text_menuPrice"
+            android:layout_alignEnd="@+id/edit_menuName"
+            android:layout_alignBottom="@+id/text_menuPrice"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:hint="메뉴가격"/>
+
+        <TextView
+            android:id="@+id/text_menuComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_menuPrice"
+            android:layout_alignLeft="@+id/text_menuPrice"
+            android:layout_marginTop="20dp"
+            android:text="menuComment: "
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edit_menuComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/text_menuComment"
+            android:layout_alignBottom="@+id/text_menuComment"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:hint="한줄평"/>
+
+        <Button
+            android:id="@+id/InsertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="확인" />
+
+        <Button
+            android:id="@+id/CancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소" />
+
+    </LinearLayout>
+</LinearLayout>

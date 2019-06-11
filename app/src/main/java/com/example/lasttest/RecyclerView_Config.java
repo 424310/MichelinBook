@@ -85,6 +85,7 @@ public class RecyclerView_Config {
                     Context context = v.getContext();
                     Intent intent =  new Intent(context, CategoryView.class);
 
+                    intent.putExtra("key", mKeys.get(i));
                     intent.putExtra("Name", mCategoryList.get(i).getName());
                     intent.putExtra("Address",  mCategoryList.get(i).getAddress());
                     intent.putExtra("Number",  mCategoryList.get(i).getNumber());

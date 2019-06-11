@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyPage_DB_Insert"></activity>
+        <activity android:name=".Menu_DB_Insert"></activity>
+        <activity android:name=".MenuUpdateDelete" />
+        <activity android:name=".CategoryDelete" />
+        <activity android:name=".CategoryUpdate" />
+        <activity android:name=".MyPage_DB_Insert" />
         <activity android:name=".CategoryView" />
         <activity android:name=".CategoryListActivity" />
         <activity android:name=".Category_DB_Insert" />
@@ -26,7 +30,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBxrpkOndjLwKX312QrBbhNl7Ceo9Sf17Q" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

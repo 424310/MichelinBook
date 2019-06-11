@@ -1,41 +1,42 @@
 package com.example.lasttest;
 
 public class Menu {
-    public String name;
-    public String address;
-    public String number;
+    private String menu_name;
+    private String menu_price;
+    private String menu_comment;
 
-    public Menu(){
-
+    public Menu() {
     }
 
-    public Menu(String name, String address, String number){
-        this.name = name;
-        this.address = address;
-        this.number = number;
+    public Menu(String menu_name, String menu_price, String menu_comment) {
+        this.menu_name = menu_name;
+        this.menu_price = menu_price;
+        this.menu_comment = menu_comment;
     }
 
-    public String getName() {
-        return name;
+    public String getMenu_name() {
+        return menu_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMenu_name(String menu_name) {
+        this.menu_name = menu_name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getMenu_price() {
+        return menu_price;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setMenu_price(String menu_price) {
+        this.menu_price = menu_price;
     }
 
-    public String getNumber() {
-        return number;
+    public String getMenu_comment() {
+        return menu_comment;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setMenu_comment(String menu_comment) {
+        this.menu_comment = menu_comment;
     }
 }
+
+
