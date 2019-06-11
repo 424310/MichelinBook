@@ -381,10 +381,9 @@ public class Map extends AppCompatActivity
         mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                String addressString = "";
                 Toast.makeText(Map.this,marker.getTitle(),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Map.this, Category_DB_Insert.class);
-                intent.putExtra(addressString, marker.getTitle());
+                intent.putExtra("addressString", marker.getTitle());
                 finish();
             }
         });
@@ -538,7 +537,7 @@ public class Map extends AppCompatActivity
         markerOptions.draggable(true);
 
         //처음마커지정
-        //currentMarker = mGoogleMap.addMarker(markerOptions);
+        currentMarker = mGoogleMap.addMarker(markerOptions);
 
 
         if (mMoveMapByAPI) {
@@ -571,7 +570,7 @@ public class Map extends AppCompatActivity
         markerOptions.snippet(markerSnippet);
         markerOptions.draggable(true);
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        //currentMarker = mGoogleMap.addMarker(markerOptions);
+        currentMarker = mGoogleMap.addMarker(markerOptions);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15);
         mGoogleMap.moveCamera(cameraUpdate);
