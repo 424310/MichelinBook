@@ -28,7 +28,7 @@ public class menu_FirebaseDatabaseHelper {
     }
     public menu_FirebaseDatabaseHelper() {
         mAuth = FirebaseAuth.getInstance();
-        UserId = mAuth.getCurrentUser().getDisplayName();
+        UserId = mAuth.getCurrentUser().getUid();
         //카테고리 이름(key)은 어떻게 가져와야할까? 이렇게!
         CategoryView categoryView = new CategoryView();
         key = categoryView.getCategoryView();

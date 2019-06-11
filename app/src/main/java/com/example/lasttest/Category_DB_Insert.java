@@ -60,7 +60,7 @@ public class Category_DB_Insert extends AppCompatActivity {
 
         //해당 User 값 받아오기
         mAuth = FirebaseAuth.getInstance();
-        UserId = mAuth.getCurrentUser().getDisplayName();
+        UserId = mAuth.getCurrentUser().getUid();
 
         address_Btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -45,7 +45,7 @@ public class Menu_DB_Insert extends AppCompatActivity {
 
         //해당 User 값 받아오기
         mAuth = FirebaseAuth.getInstance();
-        UserId = mAuth.getCurrentUser().getDisplayName();
+        UserId = mAuth.getCurrentUser().getUid();
 
         //카테고리 이름 받아오기
         CategoryView categoryView = new CategoryView();
