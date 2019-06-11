@@ -15,18 +15,15 @@ public class CategoryView extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     private TextView textView1, textView2, textView3;
-    public String Address, Number, key;
+    public String Name, Address, Number;
     public Button Update, Delete, menu_insert, menu_open, menu_close;
 
-    public static String Name = "name";
+    public static String key = "key";
     public CategoryView() {
 
     }
     public String getCategoryView() {
-        return Name;
-    }
-    public void setCategoryView(String Name) {
-        this.Name = Name;
+        return key;
     }
 
     @Override
@@ -81,8 +78,8 @@ public class CategoryView extends AppCompatActivity {
 
                 intent.putExtra("key", key);
                 intent.putExtra("Name", textView1.getText().toString());
-                intent.putExtra("Number",  textView2.getText().toString());
-                intent.putExtra("Address", textView3.getText().toString());
+                intent.putExtra("Address",  textView2.getText().toString());
+                intent.putExtra("Number", textView3.getText().toString());
 
                 startActivity(intent);
             }
@@ -95,8 +92,8 @@ public class CategoryView extends AppCompatActivity {
 
                 intent.putExtra("key", key);
                 intent.putExtra("Name", textView1.getText().toString());
-                intent.putExtra("Number",  textView2.getText().toString());
-                intent.putExtra("Address", textView3.getText().toString());
+                intent.putExtra("Address",  textView2.getText().toString());
+                intent.putExtra("Number", textView3.getText().toString());
 
                 startActivity(intent);
             }

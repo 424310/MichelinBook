@@ -57,8 +57,6 @@ public class CategoryUpdate extends AppCompatActivity {
 
                     @Override
                     public void DataIsUpdated() {
-                        CategoryView categoryView = new CategoryView();
-                        categoryView.setCategoryView(editName.getText().toString());
                         Toast.makeText(CategoryUpdate.this, "Category record has been updated successfully", Toast.LENGTH_LONG).show();
                         finish();
                     }

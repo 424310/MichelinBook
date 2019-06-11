@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class menu_FirebaseDatabaseHelper {
-    private String UserId, name;
+    private String UserId, key;
     public FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference databaseRef, myRef;
@@ -29,13 +29,13 @@ public class menu_FirebaseDatabaseHelper {
     public menu_FirebaseDatabaseHelper() {
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
-        //카테고리 이름은 어떻게 가져와야할까? 이렇게!
+        //카테고리 이름(key)은 어떻게 가져와야할까? 이렇게!
         CategoryView categoryView = new CategoryView();
-        name = categoryView.getCategoryView();
+        key = categoryView.getCategoryView();
 
         database = FirebaseDatabase.getInstance();
         databaseRef = database.getReference(UserId);
-        myRef = databaseRef.child("Menu").child(name);
+        myRef = databaseRef.child("Menu").child(key);
     }
 
     public void readMenus(final DataStatus dataStatus){
