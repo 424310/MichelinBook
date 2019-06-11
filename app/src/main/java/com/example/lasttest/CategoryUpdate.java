@@ -1,5 +1,6 @@
 package com.example.lasttest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -59,6 +60,14 @@ public class CategoryUpdate extends AppCompatActivity {
                     public void DataIsUpdated() {
                         Toast.makeText(CategoryUpdate.this, "Category record has been updated successfully", Toast.LENGTH_LONG).show();
                         finish();
+                        Intent intent =  new Intent(CategoryUpdate.this, CategoryView.class);
+
+                        intent.putExtra("key", key);
+                        intent.putExtra("Name", editName.getText().toString());
+                        intent.putExtra("Address",  editAddress.getText().toString());
+                        intent.putExtra("Number", editNumber.getText().toString());
+
+                        startActivity(intent);
                     }
 
                     @Override
