@@ -48,6 +48,7 @@ public class Category_DB_Insert extends AppCompatActivity {
 
         AddressString = getIntent().getStringExtra("addressString");
 
+
         // 변수 초기화
         editName = (EditText) findViewById(R.id.edit_name);
         editAddress = (EditText) findViewById(R.id.edit_address);
@@ -70,7 +71,7 @@ public class Category_DB_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Category_DB_Insert.this, Map.class);
-
+                finish();
                 startActivity(intent);
             }
         });

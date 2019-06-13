@@ -385,6 +385,8 @@ public class Map extends AppCompatActivity
                 Intent intent = new Intent(Map.this, Category_DB_Insert.class);
                 intent.putExtra("addressString", marker.getTitle());
                 finish();
+                startActivity(intent);
+
             }
         });
     }

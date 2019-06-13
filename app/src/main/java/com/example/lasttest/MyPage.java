@@ -18,7 +18,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class MyPage extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ImageView imageView, toolbar_img;
 
     private String UserId, name, url;
 
@@ -33,6 +33,7 @@ public class MyPage extends AppCompatActivity {
         setContentView(R.layout.activity_my_page);
 
         imageView = (ImageView) findViewById(R.id.ivProfile);
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
 
         mAuth = FirebaseAuth.getInstance();
         UserId = mAuth.getCurrentUser().getDisplayName();
@@ -46,6 +47,15 @@ public class MyPage extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 url = uri.toString();
                 Glide.with(getApplicationContext()).load(url).into(imageView);
+            }
+        });
+
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(MyPage.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
