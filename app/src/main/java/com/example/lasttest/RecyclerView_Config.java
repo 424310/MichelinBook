@@ -9,7 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -34,6 +37,12 @@ public class RecyclerView_Config {
 
         private String key;
 
+        //이미지뷰!!(시작)
+        private ImageView mImageView;
+        private String url;
+        //이미지뷰!!(끝)
+
+
         public CategoryItemView(ViewGroup parent){
             super(LayoutInflater.from(mContext).inflate(R.layout.category_list_item, parent, false));
 
@@ -43,12 +52,21 @@ public class RecyclerView_Config {
             mName = (TextView) itemView.findViewById(R.id.name_txtView);
             mAddress = (TextView) itemView.findViewById(R.id.address_txtView);
             mNumber = (TextView) itemView.findViewById(R.id.number_txtView);
+
+            //이미지뷰!!(시작)
+            mImageView = (ImageView) itemView.findViewById(R.id.imageView);
+            //이미지뷰!!(끝)
         }
 
         public void bind(Category category, String key){
             mName.setText(category.getName());
             mAddress.setText(category.getAddress());
             mNumber.setText(category.getNumber());
+
+            //이미지뷰!!(시작)
+            url = category.getImage();
+            Glide.with(mContext).load(url).into(mImageView);
+            //이미지뷰!!(끝)
 
             this.key = key;
         }
@@ -89,6 +107,7 @@ public class RecyclerView_Config {
                     intent.putExtra("Name", mCategoryList.get(i).getName());
                     intent.putExtra("Address",  mCategoryList.get(i).getAddress());
                     intent.putExtra("Number",  mCategoryList.get(i).getNumber());
+                    intent.putExtra("Image", mCategoryList.get(i).getImage());
 
                     context.startActivity(intent);
                 }

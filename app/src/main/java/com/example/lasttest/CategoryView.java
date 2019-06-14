@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -14,8 +17,9 @@ public class CategoryView extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    public ImageView imageView;
     private TextView textView1, textView2, textView3;
-    public String Name, Address, Number;
+    public String Name, Address, Number, url;
     public Button Update, Delete, menu_insert, menu_open, menu_close;
 
     public static String key = "key";
@@ -36,8 +40,10 @@ public class CategoryView extends AppCompatActivity {
         Name = intent.getStringExtra("Name");
         Address = intent.getStringExtra("Address");
         Number = intent.getStringExtra("Number");
+        url = intent.getStringExtra("Image");
         key = intent.getStringExtra("key");
 
+        imageView = (ImageView) findViewById(R.id.imageView);
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);
@@ -45,6 +51,7 @@ public class CategoryView extends AppCompatActivity {
         textView1.setText(Name);
         textView2.setText(Address);
         textView3.setText(Number);
+        Glide.with(this).load(url).into(imageView);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_menus);
         new menu_FirebaseDatabaseHelper().readMenus(new menu_FirebaseDatabaseHelper.DataStatus() {
@@ -81,6 +88,7 @@ public class CategoryView extends AppCompatActivity {
                 intent.putExtra("Name", textView1.getText().toString());
                 intent.putExtra("Address",  textView2.getText().toString());
                 intent.putExtra("Number", textView3.getText().toString());
+                intent.putExtra("Image", url);
 
                 startActivity(intent);
             }
@@ -96,6 +104,7 @@ public class CategoryView extends AppCompatActivity {
                 intent.putExtra("Name", textView1.getText().toString());
                 intent.putExtra("Address",  textView2.getText().toString());
                 intent.putExtra("Number", textView3.getText().toString());
+                intent.putExtra("Image", url);
 
                 startActivity(intent);
             }

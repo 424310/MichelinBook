@@ -92,6 +92,13 @@
             android:inputType="textPersonName"
             android:maxLength="10" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:background="#eeeeee" />
+
         <Button
             android:id="@+id/inputBtn"
             android:layout_width="wrap_content"
