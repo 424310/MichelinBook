@@ -130,13 +130,13 @@ public class CategoryUpdate extends AppCompatActivity {
         UpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
+
                 Category category = new Category();
                 category.setName(editName.getText().toString());
                 category.setAddress(editAddress.getText().toString());
                 category.setNumber(editNumber.getText().toString());
                 category.setImage(url);
-                */
+
                 uploadImage(editName.getText().toString().trim(), editAddress.getText().toString().trim(), editNumber.getText().toString().trim());
 
             }
@@ -152,7 +152,7 @@ public class CategoryUpdate extends AppCompatActivity {
 
     public void addCategory(final String name, final String address, final String number, final String image){
         Category categories = new Category(name, address, number, image);
-        myRef.child(UserId).child("Category").child(name).setValue(categories);
+        myRef.child(UserId).child("Category").child(key).setValue(categories);
         new FirebaseDatabaseHelper().updateCategories(key, categories, new FirebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Category> categories, List<String> keys) {

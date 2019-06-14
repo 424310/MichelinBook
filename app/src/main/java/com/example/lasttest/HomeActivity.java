@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import android.view.animation.Animation;
@@ -21,6 +24,7 @@ import android.view.animation.AnimationUtils;
 import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.Query;
 
 import java.util.List;
 
@@ -31,15 +35,14 @@ public class HomeActivity extends AppCompatActivity
     private FirebaseAuth auth;
     private Context mContext;
     private RecyclerView mRecyclerView;
+    //recyclerView 검색용
+    private EditText search;
 
     private FloatingActionButton fab_main, fab_sub1, fab_sub2, fab_sub3;
     private Animation fab_open, fab_close;
 
     private boolean isFabOpen = false;
 
-    /*DB 불러온 리사이클러뷰
-    private RecyclerView mRecyclerView;
-    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,6 @@ public class HomeActivity extends AppCompatActivity
         auth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,7 +82,6 @@ public class HomeActivity extends AppCompatActivity
 
         nameTextView.setText(auth.getCurrentUser().getDisplayName());
         emailTextView.setText(auth.getCurrentUser().getEmail());
-
 
         //DB 불러온 리사이클러뷰(시작)
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_home);
@@ -107,6 +108,55 @@ public class HomeActivity extends AppCompatActivity
         });
         //DB 불러온 리사이클러뷰(끝)
 
+        //recyclerView 검색용
+        search = (EditText) findViewById(R.id.search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!s.toString().isEmpty()){
+                    search(s.toString());
+                }
+                else{
+                    search("");
+                }
+            }
+        });
+    }
+
+    //recyclerview 검색용
+    private void search(String s) {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_home);
+        new FirebaseDatabaseHelper().search(s, new FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Category> categories, List<String> keys) {
+                new RecyclerView_Config().setConfig(mRecyclerView, HomeActivity.this, categories, keys);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
     }
 
     @Override
