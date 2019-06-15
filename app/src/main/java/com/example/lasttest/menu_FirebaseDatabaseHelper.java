@@ -76,4 +76,13 @@ public class menu_FirebaseDatabaseHelper {
             }
         });
     }
+
+    public void deleteAllMunu(String key, final DataStatus dataStatus){
+        databaseRef.child("Menu").child(key).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                dataStatus.DataIsDeleted();
+            }
+        });
+    }
 }

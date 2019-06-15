@@ -41,6 +41,7 @@ import java.util.Iterator;
 
 public class Category_DB_Insert extends AppCompatActivity {
 
+
     //이미지뷰!!(시작)
     private Bitmap bitmap;
     private ImageView imageView, toolbar_img;

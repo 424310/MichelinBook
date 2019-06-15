@@ -53,29 +53,6 @@ public class CategoryView extends AppCompatActivity {
         textView3.setText(Number);
         Glide.with(this).load(url).into(imageView);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_menus);
-        new menu_FirebaseDatabaseHelper().readMenus(new menu_FirebaseDatabaseHelper.DataStatus() {
-            @Override
-            public void DataIsLoaded(List<Menu> menus, List<String> keys) {
-                new menu_RecyclerView_Config().setConfig(mRecyclerView, CategoryView.this, menus, keys);
-            }
-
-            @Override
-            public void DataIsInserted() {
-
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });
-
         toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
         toolbar_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,5 +121,28 @@ public class CategoryView extends AppCompatActivity {
         };
         menu_open.setOnClickListener(listener);
         menu_close.setOnClickListener(listener);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_menus);
+        new menu_FirebaseDatabaseHelper().readMenus(new menu_FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Menu> menus, List<String> keys) {
+                new menu_RecyclerView_Config().setConfig(mRecyclerView, CategoryView.this, menus, keys);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
     }
 }

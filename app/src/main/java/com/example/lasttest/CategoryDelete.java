@@ -47,10 +47,32 @@ public class CategoryDelete extends AppCompatActivity {
 
                     @Override
                     public void DataIsDeleted() {
-                        Toast.makeText(CategoryDelete.this, "Category record has been deleted successfully", Toast.LENGTH_LONG).show();
-                        finish(); return;
                     }
                 });
+
+                new menu_FirebaseDatabaseHelper().deleteAllMunu(key, new menu_FirebaseDatabaseHelper.DataStatus() {
+                    @Override
+                    public void DataIsLoaded(List<Menu> menus, List<String> keys) {
+
+                    }
+
+                    @Override
+                    public void DataIsInserted() {
+
+                    }
+
+                    @Override
+                    public void DataIsUpdated() {
+
+                    }
+
+                    @Override
+                    public void DataIsDeleted() {
+
+                    }
+                });
+
+                finish(); return;
             }
         });
 
