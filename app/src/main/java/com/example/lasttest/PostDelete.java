@@ -25,26 +25,23 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
-public class CategoryDelete extends AppCompatActivity {
+public class PostDelete extends AppCompatActivity {
 
     //이미지 삭제용!!(시작)
-    private StorageReference storageRef, mStorageRef, post_storageRef, post_mStorageRef;
+    private StorageReference storageRef, mStorageRef;
     private String UserId;
     private FirebaseAuth mAuth;
     //이미지 삭제용!!(끝)
 
     private Button DeleteBtn, CancelBtn;
-    private String key, Name,Address,Number;
+    private String key, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_delete);
 
-        key = getIntent().getStringExtra("key");
-        Name = getIntent().getStringExtra("Name");
-        Address = getIntent().getStringExtra("Address");
-        Number = getIntent().getStringExtra("Number");
+        key = getIntent().getStringExtra("date");
 
         DeleteBtn = (Button) findViewById(R.id.DeleteBtn);
         CancelBtn = (Button) findViewById(R.id.CancelBtn);
@@ -52,51 +49,7 @@ public class CategoryDelete extends AppCompatActivity {
         DeleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FirebaseDatabaseHelper().deleteCategories(key, new FirebaseDatabaseHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Category> categories, List<String> keys) {
-
-                    }
-
-                    @Override
-                    public void DataIsInserted() {
-
-                    }
-
-                    @Override
-                    public void DataIsUpdated() {
-
-                    }
-
-                    @Override
-                    public void DataIsDeleted() {
-
-                    }
-                });
-
-                new menu_FirebaseDatabaseHelper().deleteAllMunu(key, new menu_FirebaseDatabaseHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Menu> menus, List<String> keys) {
-
-                    }
-
-                    @Override
-                    public void DataIsInserted() {
-
-                    }
-
-                    @Override
-                    public void DataIsUpdated() {
-
-                    }
-
-                    @Override
-                    public void DataIsDeleted() {
-
-                    }
-                });
-
-                new post_FirebaseDatabaseHelper().deleteAllPost(key, new post_FirebaseDatabaseHelper.DataStatus() {
+                new post_FirebaseDatabaseHelper().deletePost(key, new post_FirebaseDatabaseHelper.DataStatus() {
                     @Override
                     public void DataIsLoaded(List<Post> posts, List<String> keys) {
 
@@ -118,18 +71,14 @@ public class CategoryDelete extends AppCompatActivity {
                     }
                 });
 
-                //카테고리 이미지 삭제용!! (시작)
+                //게시글 이미지 삭제용!! (시작)
                 storageRef = FirebaseStorage.getInstance().getReference();
                 mAuth = FirebaseAuth.getInstance();
                 UserId = mAuth.getCurrentUser().getUid();
-                mStorageRef = storageRef.child(UserId).child("Category").child(key + ".jpg");
+                CategoryView categoryView = new CategoryView();
+                name = categoryView.getCategoryView();
+                mStorageRef = storageRef.child(UserId).child("Post").child(name).child(key + ".jpg");
                 mStorageRef.delete();
-                //카테고리 이미지 삭제용!! (끝)
-
-                //게시글 이미지 삭제용!! (시작)
-                post_storageRef = FirebaseStorage.getInstance().getReference();
-                post_mStorageRef = post_storageRef.child(UserId).child("Post").child(key);
-                post_mStorageRef.delete();
                 //게시글 이미지 삭제용!! (끝)
 
                 finish(); return;

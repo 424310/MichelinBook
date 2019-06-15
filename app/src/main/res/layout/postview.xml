@@ -18,14 +18,23 @@
             android:layout_margin="7.5dp"
             tools:src="@mipmap/ic_launcher"/>
         <TextView
-            android:id="@+id/detailviewitem_text"
+            android:id="@+id/post_date_txtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="username"/>
+            tools:text="DATE"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/post_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_delete"
+        android:layout_below="@id/Update"/>
+
     //띄울사진
     <ImageView
-        android:id="@+id/detailviewitem_contentimage"
+        android:id="@+id/post_image_imageView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="fitXY"
@@ -43,7 +52,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/detailviewitem_contenttext"
+        android:id="@+id/post_content_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"

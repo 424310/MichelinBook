@@ -36,7 +36,7 @@ public class post_RecyclerView_Config {
     class PostItemView extends RecyclerView.ViewHolder{
 
         private TextView mPost_date;
-        private ImageView mPost_image;
+        private ImageView mPost_image, post_delete;
         private TextView mPost_content;
 
         private String key, url;
@@ -45,23 +45,20 @@ public class post_RecyclerView_Config {
             super(LayoutInflater.from(mContext).inflate(R.layout.post_list_item, parent, false));
 
             mPost_date= (TextView) itemView.findViewById(R.id.post_date_txtView);
+            post_delete = (ImageView) itemView.findViewById(R.id.post_delete);
             mPost_image = (ImageView) itemView.findViewById(R.id.post_image_imageView);
             mPost_content = (TextView) itemView.findViewById(R.id.post_content_txtView);
 
-            /*here it is simply write onItemClick listener here
-            itemView.setOnClickListener(new View.OnClickListener() {
+            post_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent =  new Intent(mContext, PostUpdateDelete.class);
+                    Intent intent =  new Intent(mContext, PostDelete.class);
 
-                    intent.putExtra("key", key);
-                    intent.putExtra("Post_date", mPost_date.getText().toString());
-                    intent.putExtra("Post_content", mPost_content.getText().toString());
+                    intent.putExtra("date", mPost_date.getText().toString());
 
                     mContext.startActivity(intent);
                 }
             });
-            */
         }
 
         public void bind(Post post, String key){

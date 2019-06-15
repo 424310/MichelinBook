@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Post_DB_Insert"
+        <activity android:name=".PostDelete"></activity>
+        <activity
+            android:name=".Post_DB_Insert"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Search"
@@ -82,7 +84,8 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

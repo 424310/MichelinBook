@@ -1,11 +1,6 @@
 package com.example.lasttest;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +22,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            mImageView = (ImageView)view.findViewById(R.id.detailviewitem_contentimage);
-            mTextView = (TextView)view.findViewById(R.id.detailviewitem_contenttext);
+            mImageView = (ImageView)view.findViewById(R.id.post_image_imageView);
+            mTextView = (TextView)view.findViewById(R.id.post_content_txtView);
         }
     }
 
