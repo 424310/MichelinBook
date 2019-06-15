@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="미슐랭북"
+                android:textSize="15dp"
                 android:textColor="#ff5f6f" />
         </android.support.v7.widget.Toolbar>
 
@@ -64,6 +65,25 @@
         android:layout_below="@+id/ivProfile"
         android:layout_marginTop="20dp"
         android:text="프로필사진넣기" />
+
+        <TextView
+            android:id="@+id/header_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:text="@string/nav_header_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:id="@+id/header_email_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header_name_textView"
+            android:text="@string/nav_header_subtitle"
+            android:textColor="@color/colorPrimaryDark"/>
     </RelativeLayout>
+
+
 
 </LinearLayout>

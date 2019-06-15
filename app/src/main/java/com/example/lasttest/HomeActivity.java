@@ -30,8 +30,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private TextView nameTextView;
-    private  TextView emailTextView;
+
     private FirebaseAuth auth;
     private Context mContext;
     private RecyclerView mRecyclerView;
@@ -77,11 +76,7 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
 
-        nameTextView = (TextView) view.findViewById(R.id.header_name_textView);
-        emailTextView = (TextView) view.findViewById(R.id.header_email_textView);
 
-        nameTextView.setText(auth.getCurrentUser().getDisplayName());
-        emailTextView.setText(auth.getCurrentUser().getEmail());
 
         //DB 불러온 리사이클러뷰(시작)
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_home);
@@ -150,13 +145,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, CategoryListActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_post) {
-            Intent intent = new Intent(this, PostList.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_mapsearch) {
+        if (id == R.id.nav_mapsearch) {
             Intent intent = new Intent(this, Map.class);
             startActivity(intent);
         } else if (id == R.id.nav_mypage) {

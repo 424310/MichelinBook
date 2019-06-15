@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +27,8 @@ public class MyPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private StorageReference storageRef, mstorageRef;
     private Button image_insert_button;
+    private TextView nameTextView;
+    private  TextView emailTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,14 @@ public class MyPage extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         mstorageRef = storageRef.child(UserId);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        nameTextView = (TextView) findViewById(R.id.header_name_textView);
+        emailTextView = (TextView) findViewById(R.id.header_email_textView);
+
+        nameTextView.setText(mAuth.getCurrentUser().getDisplayName());
+        emailTextView.setText(mAuth.getCurrentUser().getEmail());
 
         mstorageRef.child("profile"+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

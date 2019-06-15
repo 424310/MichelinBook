@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="미슐랭북"
+                android:textSize="15dp"
                 android:textColor="#ff5f6f" />
         </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
@@ -48,8 +49,8 @@
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_txtView"
             android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
             android:layout_margin="15dp"
             android:background="#eeeeee"/>
 
@@ -77,27 +78,27 @@
             android:layout_toRightOf="@id/imageView"
             android:layout_below="@id/textView2"/>
 
-        <Button
+        <ImageView
             android:id="@+id/Update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="카테고리 정보 수정"
+            android:src="@drawable/ic_edit"
             android:layout_below="@id/imageView"/>
 
-        <Button
+        <ImageView
             android:id="@+id/Delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="카테고리 정보 삭제"
+            android:src="@drawable/ic_delete"
             android:layout_below="@id/Update"/>
 
-        <Button
+        <ImageView
             android:id="@+id/menu_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메뉴판 입력"
+            android:src="@drawable/ic_img_plus"
             android:layout_below="@id/Delete"/>
 
 
