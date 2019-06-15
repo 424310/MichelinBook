@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="미슐랭북"
+                android:textSize="15dp"
                 android:textColor="#ff5f6f" />
         </android.support.v7.widget.Toolbar>
 

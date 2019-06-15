@@ -1,6 +1,7 @@
 package com.example.lasttest;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -17,10 +18,10 @@ public class CategoryView extends AppCompatActivity {
 
     private RecyclerView mRecyclerView, pRecyclerView;
 
-    public ImageView imageView, toolbar_img;
+    public ImageView imageView, toolbar_img, Delete, menu_insert, Update;
     private TextView textView1, textView2, textView3;
     public String Name, Address, Number, url;
-    public Button Update, Delete, menu_insert, menu_open, menu_close, post_insert;
+    public Button menu_open, menu_close, post_insert;
 
     public static String key = "key";
     public CategoryView() {
@@ -60,8 +61,8 @@ public class CategoryView extends AppCompatActivity {
                 finish();
             }
         });
-        Update = (Button) findViewById(R.id.Update);
-        Delete = (Button) findViewById(R.id.Delete);
+        Update = (ImageView) findViewById(R.id.Update);
+        Delete = (ImageView) findViewById(R.id.Delete);
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +95,7 @@ public class CategoryView extends AppCompatActivity {
             }
         });
 
-        menu_insert = (Button) findViewById(R.id.menu_insert);
+        menu_insert = (ImageView) findViewById(R.id.menu_insert);
         menu_open = (Button) findViewById(R.id.menu_open);
         menu_close = (Button) findViewById(R.id.menu_close);
 

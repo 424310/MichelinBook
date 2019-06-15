@@ -8,4 +8,6 @@
     tools:context=".MyPage"
     tools:showIn="@layout/activity_my_page">
 
+
+
 </android.support.constraint.ConstraintLayout>

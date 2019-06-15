@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="미슐랭북"
+                android:textSize="15dp"
                 android:textColor="#ff5f6f" />
         </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
@@ -106,6 +107,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
+            android:src="@drawable/ic_menu_camera"
             android:background="#eeeeee"/>
 
         <Button

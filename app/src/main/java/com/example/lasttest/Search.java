@@ -1,11 +1,14 @@
 package com.example.lasttest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -13,12 +16,24 @@ public class Search extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     //recyclerView 검색용
     private EditText search;
+    private ImageView toolbar_img;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(Search.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         //recyclerView 검색용
         search = (EditText) findViewById(R.id.search);
