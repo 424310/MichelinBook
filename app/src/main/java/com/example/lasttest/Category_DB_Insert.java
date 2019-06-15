@@ -43,7 +43,7 @@ public class Category_DB_Insert extends AppCompatActivity {
 
     //이미지뷰!!(시작)
     private Bitmap bitmap;
-    private ImageView imageView;
+    private ImageView imageView, toolbar_img;
     private StorageReference storageRef, mStorageRef;
     private String url;
     //이미지뷰!!(끝)
@@ -56,6 +56,7 @@ public class Category_DB_Insert extends AppCompatActivity {
     // 데이터를 저장 버튼
     private Button inputBtn;
     private Button address_Btn;
+
 
     // DB 관련 변수
     private DatabaseReference myRef;
@@ -130,6 +131,14 @@ public class Category_DB_Insert extends AppCompatActivity {
                 // result of the request.
             }
         }
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {

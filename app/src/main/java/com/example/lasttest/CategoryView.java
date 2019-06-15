@@ -17,7 +17,7 @@ public class CategoryView extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
-    public ImageView imageView;
+    public ImageView imageView, toolbar_img;
     private TextView textView1, textView2, textView3;
     public String Name, Address, Number, url;
     public Button Update, Delete, menu_insert, menu_open, menu_close;
@@ -76,6 +76,13 @@ public class CategoryView extends AppCompatActivity {
             }
         });
 
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Update = (Button) findViewById(R.id.Update);
         Delete = (Button) findViewById(R.id.Delete);
         Update.setOnClickListener(new View.OnClickListener() {

@@ -50,8 +50,8 @@ public class RecyclerView_Config {
             mView = itemView;
 
             mName = (TextView) itemView.findViewById(R.id.name_txtView);
-            mAddress = (TextView) itemView.findViewById(R.id.address_txtView);
-            mNumber = (TextView) itemView.findViewById(R.id.number_txtView);
+            //mAddress = (TextView) itemView.findViewById(R.id.address_txtView);
+            //mNumber = (TextView) itemView.findViewById(R.id.number_txtView);
 
             //이미지뷰!!(시작)
             mImageView = (ImageView) itemView.findViewById(R.id.imageView);
@@ -60,8 +60,8 @@ public class RecyclerView_Config {
 
         public void bind(Category category, String key){
             mName.setText(category.getName());
-            mAddress.setText(category.getAddress());
-            mNumber.setText(category.getNumber());
+            //mAddress.setText(category.getAddress());
+            //mNumber.setText(category.getNumber());
 
             //이미지뷰!!(시작)
             url = category.getImage();

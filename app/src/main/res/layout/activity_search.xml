@@ -3,14 +3,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
-    android:orientation="vertical">
-
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".Search">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -28,11 +23,14 @@
                 android:textColor="#ff5f6f" />
         </android.support.v7.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_home"
+        android:id="@+id/recyclerview_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

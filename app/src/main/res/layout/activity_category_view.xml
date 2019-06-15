@@ -7,12 +7,41 @@
     android:orientation="vertical"
     tools:context=".CategoryView">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <LinearLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/toolbar_btn_back"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="22dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="미슐랭북"
+                android:textColor="#ff5f6f" />
+        </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="100dp"
@@ -20,54 +49,71 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/number_txtView"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="15dp"
             android:background="#eeeeee"/>
+
         <TextView
             android:id="@+id/textView1"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/textView2"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_below="@id/textView1"/>
         <TextView
             android:id="@+id/textView3"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_below="@id/textView2"/>
 
         <Button
             android:id="@+id/Update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="카테고리 정보 수정" />
+            android:text="카테고리 정보 수정"
+            android:layout_below="@id/imageView"/>
 
         <Button
             android:id="@+id/Delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="카테고리 정보 삭제" />
+            android:text="카테고리 정보 삭제"
+            android:layout_below="@id/Update"/>
 
         <Button
             android:id="@+id/menu_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="메뉴판 입력" />
+            android:text="메뉴판 입력"
+            android:layout_below="@id/Delete"/>
 
 
         <Button
             android:id="@+id/menu_open"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메뉴판 열기" />
+            android:text="메뉴판 열기"
+            android:layout_below="@id/menu_insert"/>
 
         <Button
             android:id="@+id/menu_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메뉴판 접기" />
+            android:text="메뉴판 접기"
+            android:layout_below="@id/menu_open"/>
 
 
         <android.support.v7.widget.RecyclerView
@@ -77,8 +123,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_below="@id/menu_close"/>
+    </RelativeLayout>
 
 
 </LinearLayout>

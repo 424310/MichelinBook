@@ -77,8 +77,8 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
 
-        nameTextView = (TextView)view.findViewById(R.id.header_name_textView);
-        emailTextView = (TextView)view.findViewById(R.id.header_email_textView);
+        nameTextView = (TextView) view.findViewById(R.id.header_name_textView);
+        emailTextView = (TextView) view.findViewById(R.id.header_email_textView);
 
         nameTextView.setText(auth.getCurrentUser().getDisplayName());
         emailTextView.setText(auth.getCurrentUser().getEmail());
@@ -107,56 +107,6 @@ public class HomeActivity extends AppCompatActivity
             }
         });
         //DB 불러온 리사이클러뷰(끝)
-
-        //recyclerView 검색용
-        search = (EditText) findViewById(R.id.search);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(!s.toString().isEmpty()){
-                    search(s.toString());
-                }
-                else{
-                    search("");
-                }
-            }
-        });
-    }
-
-    //recyclerview 검색용
-    private void search(String s) {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_home);
-        new FirebaseDatabaseHelper().search(s, new FirebaseDatabaseHelper.DataStatus() {
-            @Override
-            public void DataIsLoaded(List<Category> categories, List<String> keys) {
-                new RecyclerView_Config().setConfig(mRecyclerView, HomeActivity.this, categories, keys);
-            }
-
-            @Override
-            public void DataIsInserted() {
-
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });
     }
 
     @Override
@@ -186,6 +136,8 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Search.class);
+            startActivity(intent);
             return true;
         }
 
