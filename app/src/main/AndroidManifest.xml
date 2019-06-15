@@ -14,26 +14,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Search"
-                   android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Menu_DB_Insert"
-                   android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MenuUpdateDelete"
-                   android:theme="@style/AppTheme.NoActionBar"  />
-        <activity android:name=".CategoryDelete"
-                   android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CategoryUpdate"
-                   android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyPage_DB_Insert"
-                   android:theme="@style/AppTheme.NoActionBar"  />
-        <activity android:name=".CategoryView"
-                   android:theme="@style/AppTheme.NoActionBar"  />
-        <activity android:name=".CategoryListActivity"
-                   android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Category_DB_Insert"
-                   android:theme="@style/AppTheme.NoActionBar"  />
-        <activity android:name=".PostList"
-                   android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Post_DB_Insert"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Menu_DB_Insert"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MenuUpdateDelete"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryDelete"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryUpdate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyPage_DB_Insert"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryView"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Category_DB_Insert"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PostList"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <uses-library
             android:name="org.apache.http.legacy"

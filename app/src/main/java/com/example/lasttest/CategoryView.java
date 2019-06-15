@@ -16,12 +16,12 @@ import java.util.List;
 
 public class CategoryView extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView, pRecyclerView;
 
     public ImageView imageView, toolbar_img, Delete, menu_insert, Update;
     private TextView textView1, textView2, textView3;
     public String Name, Address, Number, url;
-    public Button menu_open, menu_close;
+    public Button menu_open, menu_close, post_insert;
 
     public static String key = "key";
     public CategoryView() {
@@ -128,6 +128,38 @@ public class CategoryView extends AppCompatActivity {
             @Override
             public void DataIsLoaded(List<Menu> menus, List<String> keys) {
                 new menu_RecyclerView_Config().setConfig(mRecyclerView, CategoryView.this, menus, keys);
+            }
+
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
+
+        post_insert = (Button) findViewById(R.id.post_insert);
+        post_insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryView.this, Post_DB_Insert.class);
+                startActivity(intent);
+            }
+        });
+
+        pRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_posts);
+        new post_FirebaseDatabaseHelper().readPosts(new post_FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Post> posts, List<String> keys) {
+                new post_RecyclerView_Config().setConfig(pRecyclerView, CategoryView.this, posts, keys);
             }
 
             @Override
