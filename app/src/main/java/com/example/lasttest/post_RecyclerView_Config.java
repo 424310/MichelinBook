@@ -21,7 +21,14 @@ public class post_RecyclerView_Config {
     public void setConfig(RecyclerView recyclerView, Context context, List<Post> posts, List<String> keys){
         mContext = context;
         mPostsAdapter = new PostsAdapter(posts, keys);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        //recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        //위 코드(리사이클러뷰)의 역순 정렬
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(mLayoutManager);
+
         recyclerView.setAdapter(mPostsAdapter);
     }
 
