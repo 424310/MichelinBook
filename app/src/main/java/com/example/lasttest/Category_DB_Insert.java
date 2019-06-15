@@ -63,7 +63,7 @@ public class Category_DB_Insert extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseDatabase database;
     private String UserId;
-    private String AddressString;
+    private String AddressString, name, number;
     // 사용자 정보 가져오려고
     private FirebaseAuth mAuth;
 
@@ -72,9 +72,6 @@ public class Category_DB_Insert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category__db__insert);
 
-        AddressString = getIntent().getStringExtra("addressString");
-
-
         // 변수 초기화
         editName = (EditText) findViewById(R.id.edit_name);
         editAddress = (EditText) findViewById(R.id.edit_address);
@@ -82,8 +79,6 @@ public class Category_DB_Insert extends AppCompatActivity {
         inputBtn = (Button) findViewById(R.id.inputBtn);
         address_Btn = (Button) findViewById(R.id.address_Btn);
         address = (TextView) findViewById(R.id.address);
-
-        address.setText(AddressString);
 
         // DB 관련 변수 초기화
         database = FirebaseDatabase.getInstance();
@@ -97,11 +92,21 @@ public class Category_DB_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Category_DB_Insert.this, Map.class);
+                intent.putExtra("name", editName.getText().toString());
+                intent.putExtra("number", editNumber.getText().toString());
                 finish();
                 startActivity(intent);
             }
         });
 
+        AddressString = getIntent().getStringExtra("addressString");
+        name = getIntent().getStringExtra("name");
+        number = getIntent().getStringExtra("number");
+
+        editName.setText(name);
+        editAddress.setText(AddressString);
+        address.setText(AddressString);
+        editNumber.setText(number);
 
         //이미지뷰!!(시작)
         storageRef = FirebaseStorage.getInstance().getReference();

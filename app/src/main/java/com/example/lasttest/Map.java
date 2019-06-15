@@ -69,7 +69,7 @@ public class Map extends AppCompatActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
-        PlacesListener{
+        PlacesListener {
 
 
     private GoogleApiClient mGoogleApiClient = null;
@@ -103,10 +103,17 @@ public class Map extends AppCompatActivity
 
     List<Marker> previous_marker = null;
 
+    //intent 주고받기용(Category_DB_Insert : Map)
+    private String name, number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //intent 주고받기용
+        name = getIntent().getStringExtra("name");
+        number = getIntent().getStringExtra("number");
+
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -219,7 +226,7 @@ public class Map extends AppCompatActivity
 
     private void moveCamera(LatLng latLng, float zoom, String title) {
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-            previous_marker.clear();
+        previous_marker.clear();
         if (!title.equals("mylocation")) {
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
@@ -381,9 +388,11 @@ public class Map extends AppCompatActivity
         mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(Map.this,marker.getTitle(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Map.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Map.this, Category_DB_Insert.class);
                 intent.putExtra("addressString", marker.getTitle());
+                intent.putExtra("name", name);
+                intent.putExtra("number", number);
                 finish();
                 startActivity(intent);
 
@@ -790,8 +799,7 @@ public class Map extends AppCompatActivity
 
     }
 
-    public void showPlaceInformation(LatLng location)
-    {
+    public void showPlaceInformation(LatLng location) {
         mGoogleMap.clear();//지도 클리어
 
         if (previous_marker != null)

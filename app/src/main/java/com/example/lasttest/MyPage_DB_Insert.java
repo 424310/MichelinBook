@@ -45,9 +45,6 @@ public class MyPage_DB_Insert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page__db__insert);
 
-
-        //View v = inflater.inflate(R.layout.~~
-        //return v;
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         // Here, thisActivity is the current activity
@@ -102,7 +99,7 @@ public class MyPage_DB_Insert extends AppCompatActivity {
     public void uploadImage(){
 
         mAuth = FirebaseAuth.getInstance();
-        UserId = mAuth.getCurrentUser().getDisplayName();
+        UserId = mAuth.getCurrentUser().getUid();
 
         StorageReference mountainsRef = mStorageRef.child(UserId).child("profile"+".jpg");
 

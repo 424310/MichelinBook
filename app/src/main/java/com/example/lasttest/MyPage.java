@@ -26,7 +26,7 @@ public class MyPage extends AppCompatActivity {
     private FirebaseStorage storage;
     private FirebaseAuth mAuth;
     private StorageReference storageRef, mstorageRef;
-    private Button image_insert_button;
+    private Button profile_insert_button;
     private TextView nameTextView;
     private  TextView emailTextView;
 
@@ -39,7 +39,7 @@ public class MyPage extends AppCompatActivity {
         toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
 
         mAuth = FirebaseAuth.getInstance();
-        UserId = mAuth.getCurrentUser().getDisplayName();
+        UserId = mAuth.getCurrentUser().getUid();
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
@@ -70,8 +70,8 @@ public class MyPage extends AppCompatActivity {
             }
         });
 
-        image_insert_button = (Button) findViewById(R.id.image_insert_button);
-        image_insert_button.setOnClickListener(new View.OnClickListener() {
+        profile_insert_button = (Button) findViewById(R.id.profile_insert_button);
+        profile_insert_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyPage.this, MyPage_DB_Insert.class);
