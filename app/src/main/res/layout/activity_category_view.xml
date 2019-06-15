@@ -48,7 +48,6 @@
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_txtView"
             android:layout_alignParentLeft="true"
             android:layout_margin="15dp"
             android:background="#eeeeee"/>
@@ -125,6 +124,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_below="@id/menu_close"/>
+
+
+        <Button
+            android:id="@+id/post_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="게시글 작성"
+            android:layout_below="@id/recyclerview_menus"/>
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_posts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@id/post_insert"/>
     </RelativeLayout>
 
 

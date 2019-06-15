@@ -35,7 +35,7 @@ public class FirebaseDatabaseHelper {
         myRef = databaseRef.child("Category");
     }
 
-    //recyclerView 검색용
+    //recyclerView 검색용(시작)
     public void search(String s, final DataStatus dataStatus)
     {
         Query query = myRef.orderByChild("name").startAt(s).endAt(s + "\uf8ff");
@@ -59,6 +59,8 @@ public class FirebaseDatabaseHelper {
             }
         });
     }
+    //recyclerView 검색용(끝)
+
 
     public void readCategories(final DataStatus dataStatus){
         myRef.addValueEventListener(new ValueEventListener() {
