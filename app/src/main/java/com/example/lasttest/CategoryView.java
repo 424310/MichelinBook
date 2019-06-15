@@ -1,16 +1,23 @@
 package com.example.lasttest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -18,10 +25,13 @@ public class CategoryView extends AppCompatActivity {
 
     private RecyclerView mRecyclerView, pRecyclerView;
 
-    public ImageView imageView, toolbar_img, Delete, menu_insert, Update;
+    public ImageView imageView, toolbar_img, Delete, menu_insert, Update, menu_open;
     private TextView textView1, textView2, textView3;
     public String Name, Address, Number, url;
-    public Button menu_open, menu_close, post_insert;
+    public FloatingActionButton post_insert;
+
+    private boolean isMenuOpen = false;
+
 
     public static String key = "key";
     public CategoryView() {
@@ -96,8 +106,8 @@ public class CategoryView extends AppCompatActivity {
         });
 
         menu_insert = (ImageView) findViewById(R.id.menu_insert);
-        menu_open = (Button) findViewById(R.id.menu_open);
-        menu_close = (Button) findViewById(R.id.menu_close);
+        menu_open = (ImageView) findViewById(R.id.menu_open);
+
 
         menu_insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,15 +123,19 @@ public class CategoryView extends AppCompatActivity {
             public void onClick(View v) {
                 if (v.getId() == R.id.menu_open) {
                     //menu_open를 클릭하게 되면, mRecyclerView는 VISIBLE로 set함으로써 보이게 됨
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                } else if (v.getId() == R.id.menu_close) {
-                    //menu_close를 클릭하게 되면, mRecyclerView는 GONE으로 set함으로써 안 보이게 됨(공간도 차지X)
-                    mRecyclerView.setVisibility(View.GONE);
+                    if (isMenuOpen) {
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        menu_open.setImageResource(R.drawable.ic_menu_close);
+                        isMenuOpen = false;
+                    } else {
+                        mRecyclerView.setVisibility(View.GONE);
+                        menu_open.setImageResource(R.drawable.ic_menu_open);
+                        isMenuOpen = true;
+                    }
                 }
             }
         };
         menu_open.setOnClickListener(listener);
-        menu_close.setOnClickListener(listener);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_menus);
         new menu_FirebaseDatabaseHelper().readMenus(new menu_FirebaseDatabaseHelper.DataStatus() {
@@ -146,7 +160,7 @@ public class CategoryView extends AppCompatActivity {
             }
         });
 
-        post_insert = (Button) findViewById(R.id.post_insert);
+        post_insert = (FloatingActionButton) findViewById(R.id.post_insert);
         post_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,5 +191,6 @@ public class CategoryView extends AppCompatActivity {
 
             }
         });
+
     }
 }
