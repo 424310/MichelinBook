@@ -1,77 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Post_DB_Insert">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/toolbar_btn_back"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="22dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="미슐랭북"
+                android:textSize="15dp"
+                android:textColor="#ff5f6f" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/toolbar_btn_back"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="22dp"
-                    android:src="@drawable/ic_arrow_back" />
-
-                <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="미슐랭북"
-                    android:textColor="#ff5f6f" />
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
-
+        android:layout_marginTop="10dp">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:background="#eeeeee" />
+            android:layout_alignParentLeft="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_menu_camera"
+            android:tint="#c9c9c9"/>
 
-        <TextView
-            android:id="@+id/text_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="CONTENT: "
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/edit_content"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edittext"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignBaseline="@+id/text_content"
-            android:layout_alignBottom="@+id/text_content"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/imageView">
 
+            <EditText
+                android:id="@+id/edit_content"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top"
+                android:inputType="text"
+                app:theme="@style/EditTextStyle"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/inputBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="입력" />
+            android:layout_below="@id/edittext"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@id/imageView"
+            android:text="게시"
+            />
+    </RelativeLayout>
 
-    </LinearLayout>
+
+
+
 </LinearLayout>

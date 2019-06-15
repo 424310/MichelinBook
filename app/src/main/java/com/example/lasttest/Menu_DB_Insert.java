@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,7 @@ import java.util.Iterator;
 public class Menu_DB_Insert extends AppCompatActivity {
 
     private EditText edit_menuName, edit_menuPrice, edit_menuComment;
+    private ImageView toolbar_img;
     private Button InsertBtn, CancelBtn;
     private String UserId, name;
 
@@ -54,6 +56,14 @@ public class Menu_DB_Insert extends AppCompatActivity {
         // 파이어베이스 입력 경로
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // 클릭 시 EditText의 내용이 DB에 저장
         InsertBtn.setOnClickListener(new View.OnClickListener() {

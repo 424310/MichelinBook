@@ -45,9 +45,6 @@
         <activity
             android:name=".Category_DB_Insert"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".PostList"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -71,10 +68,6 @@
         <activity
             android:name=".QuickVisit"
             android:label="@string/title_activity_quick_visit"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddPost"
-            android:label="@string/title_activity_add_post"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"

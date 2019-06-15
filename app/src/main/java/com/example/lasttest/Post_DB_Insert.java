@@ -56,7 +56,7 @@ public class Post_DB_Insert extends AppCompatActivity {
     private String UserId, name, url;
 
     private EditText edit_content;
-    private ImageView imageView;
+    private ImageView imageView, toolbar_img;
     private Button inputBtn;
 
     // 현재 시간 가져오기용
@@ -124,6 +124,14 @@ public class Post_DB_Insert extends AppCompatActivity {
             }
         });
         //이미지뷰!!(끝)
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // 버튼 리스너 정의
         // 클릭 시 EditText의 내용이 DB에 저장, imageView 이미지가 Storage에 저장
