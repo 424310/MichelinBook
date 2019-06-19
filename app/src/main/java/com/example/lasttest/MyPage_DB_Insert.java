@@ -95,7 +95,7 @@ public class MyPage_DB_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadImage();
-                Toast.makeText(getApplicationContext(), "firebase에 업로드 성공", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "firebase에 업로드 성공", Toast.LENGTH_SHORT).show();
                 finish();
                 Intent i = new Intent(MyPage_DB_Insert.this, MyPage.class);
                 startActivity(i);

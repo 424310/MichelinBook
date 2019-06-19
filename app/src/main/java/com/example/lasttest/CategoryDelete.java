@@ -132,7 +132,7 @@ public class CategoryDelete extends AppCompatActivity {
                 post_mStorageRef.delete();
                 //게시글 이미지 삭제용!! (끝)
 
-                finish();
+                finish(); return;
 
             }
         });

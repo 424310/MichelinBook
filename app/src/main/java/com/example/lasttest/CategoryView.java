@@ -83,6 +83,7 @@ public class CategoryView extends AppCompatActivity {
                 intent.putExtra("Address",  textView2.getText().toString());
                 intent.putExtra("Number", textView3.getText().toString());
                 intent.putExtra("Image", url);
+                finish();
 
                 startActivity(intent);
             }

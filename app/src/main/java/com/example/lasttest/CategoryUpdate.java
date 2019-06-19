@@ -174,7 +174,7 @@ public class CategoryUpdate extends AppCompatActivity {
 
             @Override
             public void DataIsUpdated() {
-                Toast.makeText(CategoryUpdate.this, "Category record has been updated successfully", Toast.LENGTH_LONG).show();
+                //Toast.makeText(CategoryUpdate.this, "Category record has been updated successfully", Toast.LENGTH_LONG).show();
                 finish();
                 Intent intent =  new Intent(CategoryUpdate.this, CategoryView.class);
 
