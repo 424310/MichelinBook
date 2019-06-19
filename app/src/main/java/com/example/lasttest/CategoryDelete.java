@@ -114,7 +114,7 @@ public class CategoryDelete extends AppCompatActivity {
 
                     @Override
                     public void DataIsDeleted() {
-
+                        finish(); return;
                     }
                 });
 
@@ -132,7 +132,8 @@ public class CategoryDelete extends AppCompatActivity {
                 post_mStorageRef.delete();
                 //게시글 이미지 삭제용!! (끝)
 
-                finish(); return;
+                finish();
+
             }
         });
 

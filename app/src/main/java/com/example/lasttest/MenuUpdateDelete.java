@@ -67,7 +67,7 @@ public class MenuUpdateDelete extends AppCompatActivity {
 
                     @Override
                     public void DataIsUpdated() {
-                        Toast.makeText(MenuUpdateDelete.this, "Menu record has been updated successfully", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MenuUpdateDelete.this, "Menu record has been updated successfully", Toast.LENGTH_LONG).show();
                         finish();
                     }
 
@@ -100,7 +100,7 @@ public class MenuUpdateDelete extends AppCompatActivity {
 
                     @Override
                     public void DataIsDeleted() {
-                        Toast.makeText(MenuUpdateDelete.this, "Menu record has been deleted successfully", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MenuUpdateDelete.this, "Menu record has been deleted successfully", Toast.LENGTH_LONG).show();
                         finish(); return;
                     }
                 });

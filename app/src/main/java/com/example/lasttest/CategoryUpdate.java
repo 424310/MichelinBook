@@ -36,9 +36,10 @@ public class CategoryUpdate extends AppCompatActivity {
 
     //이미지뷰!!(시작)
     private Bitmap bitmap;
-    private ImageView imageView, address_Btn;
+    private ImageView imageView;
     private StorageReference storageRef, mStorageRef;
     private String url;
+    private ImageView toolbar_img;
     //이미지뷰!!(끝)
 
     // DB 관련 변수
@@ -52,7 +53,6 @@ public class CategoryUpdate extends AppCompatActivity {
     private EditText editName, editAddress, editNumber;
     private Button UpdateBtn, CancelBtn;
     private String key, Name,Address,Number;
-    private ImageView toolbar_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,17 +94,7 @@ public class CategoryUpdate extends AppCompatActivity {
                 finish();
             }
         });
-        address_Btn = (ImageView) findViewById(R.id.address_Btn);
-        address_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CategoryUpdate.this, Map.class);
-                intent.putExtra("name", editName.getText().toString());
-                intent.putExtra("number", editNumber.getText().toString());
-                finish();
-                startActivity(intent);
-            }
-        });
+
         //이미지뷰!!(시작)
         storageRef = FirebaseStorage.getInstance().getReference();
 
