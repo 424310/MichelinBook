@@ -44,19 +44,17 @@ public class Category_DB_Insert extends AppCompatActivity {
 
     //이미지뷰!!(시작)
     private Bitmap bitmap;
-    private ImageView imageView, toolbar_img;
+    private ImageView imageView, toolbar_img, address_Btn;
     private StorageReference storageRef, mStorageRef;
     private String url;
     //이미지뷰!!(끝)
 
     // DB에 저장시킬 데이터를 입력받는 EditText
     private EditText editName, editAddress, editNumber;
-    private TextView address;
     String addressString;
 
     // 데이터를 저장 버튼
     private Button inputBtn;
-    private Button address_Btn;
 
 
     // DB 관련 변수
@@ -77,8 +75,7 @@ public class Category_DB_Insert extends AppCompatActivity {
         editAddress = (EditText) findViewById(R.id.edit_address);
         editNumber = (EditText) findViewById(R.id.edit_number);
         inputBtn = (Button) findViewById(R.id.inputBtn);
-        address_Btn = (Button) findViewById(R.id.address_Btn);
-        address = (TextView) findViewById(R.id.address);
+        address_Btn = (ImageView) findViewById(R.id.address_Btn);
 
         // DB 관련 변수 초기화
         database = FirebaseDatabase.getInstance();
@@ -105,7 +102,6 @@ public class Category_DB_Insert extends AppCompatActivity {
 
         editName.setText(name);
         editAddress.setText(AddressString);
-        address.setText(AddressString);
         editNumber.setText(number);
 
         //이미지뷰!!(시작)

@@ -76,7 +76,6 @@ public class CategoryView extends AppCompatActivity {
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 Intent intent =  new Intent(CategoryView.this, CategoryUpdate.class);
 
                 intent.putExtra("key", key);
@@ -92,7 +91,6 @@ public class CategoryView extends AppCompatActivity {
         Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 Intent intent =  new Intent(CategoryView.this, CategoryDelete.class);
 
                 intent.putExtra("key", key);
