@@ -36,7 +36,7 @@ public class CategoryUpdate extends AppCompatActivity {
 
     //이미지뷰!!(시작)
     private Bitmap bitmap;
-    private ImageView imageView;
+    private ImageView imageView, address_Btn;
     private StorageReference storageRef, mStorageRef;
     private String url;
     //이미지뷰!!(끝)
@@ -52,6 +52,7 @@ public class CategoryUpdate extends AppCompatActivity {
     private EditText editName, editAddress, editNumber;
     private Button UpdateBtn, CancelBtn;
     private String key, Name,Address,Number;
+    private ImageView toolbar_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +87,24 @@ public class CategoryUpdate extends AppCompatActivity {
         editNumber.setText(Number);
         Glide.with(this).load(url).into(imageView);
 
-
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        address_Btn = (ImageView) findViewById(R.id.address_Btn);
+        address_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryUpdate.this, Map.class);
+                intent.putExtra("name", editName.getText().toString());
+                intent.putExtra("number", editNumber.getText().toString());
+                finish();
+                startActivity(intent);
+            }
+        });
         //이미지뷰!!(시작)
         storageRef = FirebaseStorage.getInstance().getReference();
 

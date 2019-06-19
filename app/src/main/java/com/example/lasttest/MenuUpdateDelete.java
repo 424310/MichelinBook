@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MenuUpdateDelete extends AppCompatActivity {
     private EditText menuName, menuPrice, menuComment;
     private Button menuUpdateBtn, menuDeleteBtn;
     private String key, Menu_name, Menu_price, Menu_comment;
+    private ImageView toolbar_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,14 @@ public class MenuUpdateDelete extends AppCompatActivity {
         menuName.setText(Menu_name);
         menuPrice.setText(Menu_price);
         menuComment.setText(Menu_comment);
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         menuUpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

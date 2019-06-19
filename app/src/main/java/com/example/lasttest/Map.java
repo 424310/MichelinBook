@@ -388,7 +388,7 @@ public class Map extends AppCompatActivity
         mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(Map.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Map.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Map.this, Category_DB_Insert.class);
                 intent.putExtra("addressString", marker.getTitle());
                 intent.putExtra("name", name);

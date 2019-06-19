@@ -19,14 +19,13 @@ import com.google.firebase.storage.StorageReference;
 
 public class MyPage extends AppCompatActivity {
 
-    private ImageView imageView, toolbar_img;
+    private ImageView imageView, toolbar_img, profile_insert_button;
 
     private String UserId, name, url;
 
     private FirebaseStorage storage;
     private FirebaseAuth mAuth;
     private StorageReference storageRef, mstorageRef;
-    private Button profile_insert_button;
     private TextView nameTextView;
     private  TextView emailTextView;
 
@@ -70,7 +69,7 @@ public class MyPage extends AppCompatActivity {
             }
         });
 
-        profile_insert_button = (Button) findViewById(R.id.profile_insert_button);
+        profile_insert_button = (ImageView) findViewById(R.id.profile_insert_button);
         profile_insert_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

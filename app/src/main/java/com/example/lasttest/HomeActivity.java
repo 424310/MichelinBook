@@ -29,7 +29,7 @@ import com.google.firebase.database.Query;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth auth;
     private Context mContext;
@@ -37,10 +37,8 @@ public class HomeActivity extends AppCompatActivity
     //recyclerView 검색용
     private EditText search;
 
-    private FloatingActionButton fab_main, fab_sub1, fab_sub2, fab_sub3;
-    private Animation fab_open, fab_close;
+    private FloatingActionButton fab_main;
 
-    private boolean isFabOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +47,16 @@ public class HomeActivity extends AppCompatActivity
 
         mContext = getApplicationContext();
 
-        fab_open = AnimationUtils.loadAnimation(mContext, R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(mContext, R.anim.fab_close);
 
         fab_main = (FloatingActionButton) findViewById(R.id.fab_main);
-        fab_sub1 = (FloatingActionButton) findViewById(R.id.fab_sub1);
-        fab_sub2 = (FloatingActionButton) findViewById(R.id.fab_sub2);
-        fab_sub3 = (FloatingActionButton) findViewById(R.id.fab_sub3);
 
-        fab_main.setOnClickListener(this);
-        fab_sub1.setOnClickListener(this);
-        fab_sub2.setOnClickListener(this);
-        fab_sub3.setOnClickListener(this);
+        fab_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Category_DB_Insert.class);
+                startActivity(intent);
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
@@ -145,69 +141,25 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_mapsearch) {
-            Intent intent = new Intent(this, Map.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_mypage) {
-            finish();
-            Intent intent = new Intent(this, MyPage.class);
-            startActivity(intent);
-        } else if(id == R.id.nav_logout) {
+        if (id == R.id.nav_logout) {
             auth.signOut();
             finish();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
+        } else if (id == R.id.nav_mypage) {
+            Intent intent = new Intent(this, MyPage.class);
+            startActivity(intent);
+        } /*else if(id == R.id.nav_mapsearch) {
+            Intent intent = new Intent(this, Map.class);
+            startActivity(intent);
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fab_main:
-                toggleFab();
-                break;
-            case R.id.fab_sub1:
-                toggleFab();
-                Intent intent1 = new Intent(this, QuickVisit.class);
-                startActivity(intent1);
-                break;
-            case R.id.fab_sub2:
-                toggleFab();
-                //Intent intent2 = new Intent(this, AddPost.class);
-                //startActivity(intent2);
-                break;
-            case R.id.fab_sub3:
-                toggleFab();
-                Intent intent3 = new Intent(this, Category_DB_Insert.class);
-                startActivity(intent3);
-                break;
-        }
-    }
 
-    private void toggleFab() {
-        if (isFabOpen) {
-            fab_main.setImageResource(R.drawable.ic_fab_plus);
-            fab_sub1.startAnimation(fab_close);
-            fab_sub2.startAnimation(fab_close);
-            fab_sub3.startAnimation(fab_close);
-            fab_sub1.setClickable(false);
-            fab_sub2.setClickable(false);
-            fab_sub3.setClickable(false);
-            isFabOpen = false;
-        } else {
-            fab_main.setImageResource(R.drawable.ic_fab_close);
-            fab_sub1.startAnimation(fab_open);
-            fab_sub2.startAnimation(fab_open);
-            fab_sub3.startAnimation(fab_open);
-            fab_sub1.setClickable(true);
-            fab_sub2.setClickable(true);
-            fab_sub3.setClickable(true);
-            isFabOpen = true;
-        }
 
-    }
+
 }

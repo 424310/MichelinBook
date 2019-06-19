@@ -42,84 +42,85 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/text_menuName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="menuName: "
+            android:layout_marginTop="70dp"
+            android:text="메뉴이름: "
             android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edit_menuName"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/text_menuName"
-            android:layout_alignBottom="@+id/text_menuName"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:maxLength="10"
-            android:hint="메뉴이름"/>
+            android:layout_toRightOf="@id/text_menuName"
+            android:layout_marginTop="55dp"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/text_menuPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_menuName"
-            android:layout_alignLeft="@+id/text_menuName"
-            android:layout_marginTop="20dp"
-            android:text="menuPrice: "
+            android:layout_marginTop="30dp"
+            android:text="가격: "
             android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edit_menuPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/text_menuPrice"
+            android:layout_below="@id/text_menuName"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/text_menuPrice"
             android:layout_alignEnd="@+id/edit_menuName"
-            android:layout_alignBottom="@+id/text_menuPrice"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:maxLength="10"
-            android:hint="메뉴가격"/>
+            android:inputType="textPersonName"/>
 
         <TextView
             android:id="@+id/text_menuComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_menuPrice"
-            android:layout_alignLeft="@+id/text_menuPrice"
-            android:layout_marginTop="20dp"
-            android:text="menuComment: "
+            android:layout_marginTop="30dp"
+            android:text="한줄평: "
             android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edit_menuComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/text_menuComment"
-            android:layout_alignBottom="@+id/text_menuComment"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:maxLength="10"
-            android:hint="한줄평"/>
+            android:layout_below="@id/edit_menuPrice"
+            android:layout_marginTop="5dp"
+            android:layout_alignEnd="@id/edit_menuName"
+            android:layout_toRightOf="@id/text_menuComment"
+            android:inputType="textPersonName"/>
 
         <Button
             android:id="@+id/InsertBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="200dp"
             android:layout_height="wrap_content"
-            android:text="확인" />
+            android:layout_below="@id/edit_menuComment"
+            android:text="추가"
+            android:backgroundTint="@color/mainColor"
+            android:textColor="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/CancelBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="취소" />
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/edit_menuComment"
+            android:layout_toRightOf="@id/InsertBtn"
+            android:text="취소"
+            android:textColor="@color/colorPrimary"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

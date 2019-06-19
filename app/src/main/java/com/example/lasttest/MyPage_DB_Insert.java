@@ -34,7 +34,7 @@ import java.util.zip.Inflater;
 public class MyPage_DB_Insert extends AppCompatActivity {
 
     private Bitmap bitmap;
-    private ImageView ivUser;
+    private ImageView ivUser, toolbar_img;
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
     private String UserId;
@@ -46,6 +46,14 @@ public class MyPage_DB_Insert extends AppCompatActivity {
         setContentView(R.layout.activity_my_page__db__insert);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        toolbar_img = (ImageView) findViewById(R.id.toolbar_btn_back);
+        toolbar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
